@@ -1,36 +1,48 @@
-/**
- * Three pillars of javascript:
- * 1. Manipulitating the DOM
- * 2. Handle Events
- * 3. Communicating with the server
- * 
- */
+document.addEventListener("DOMContentLoaded", ()=> {
+    const form = document.querySelector("form#transaction-form")
+    form.addEventListener("submit", handleSubmit)
+})
 
-/**
- * Steps:
- * 1. Capture form data
- */
+let counter = 1
+let transactions = []
 
-
-const form = document.querySelector("form#transaction-form")
-form.addEventListener("submit", function(event){
-    event.preventDefault() //preventing default form behaviour
-
-    //defining a transaction
+function handleSubmit(event){
+    event.preventDefault()
     const transaction = {
-        id: 1,
-        transactionType: event.target.type.value,
+        id: counter++,
+        type: event.target.type.value,
         amount: event.target.amount.value
     }
+    transactions = [...transactions, transaction] // same as transations.push(transaction)
+    renderTransactions(transactions)
+    event.target.reset()
+}
 
-    const tr = document.createElement('tr')//creating the parent row of transation details
-    
-    //looping through the transaction details to create transaction cells
-    for(key in transaction){
-        const td = document.createElement("td")
-        td.innerText = transaction[key]
-        tr.appendChild(td) //
-    }
+//display transactions to the table
+function renderTransactions(transactions){
+    const tbody = document.querySelector("#transactions")
+    tbody.innerHTML = ''
 
-    document.querySelector("tbody#transactions").appendChild(tr)
-})
+    transactions.forEach((transaction, index)=> {
+        tbody.innerHTML += `
+        <tr>
+         <td>${index = index + 1}</td>
+         <td>${transaction.type}</td>
+         <td>${transaction.amount}</td>
+         <td>
+             <button onclick='removeTransaction(${transaction.id})' class='btn btn-danger btn-sm'>X</button>
+         </td>
+        </tr>
+        `
+    })
+}
+
+
+//Removing a transaction from the table
+function removeTransaction(id){
+    const filteredTransactions = transactions.filter((transaction)=> {
+        return transaction.id !== id
+    })
+    transactions = [...filteredTransactions]
+    renderTransactions(transactions)
+}
