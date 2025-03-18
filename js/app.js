@@ -26,7 +26,7 @@ function renderTransactions(transactions){
     transactions.forEach((transaction, index)=> {
         tbody.innerHTML += `
         <tr>
-         <td>${index = index + 1}</td>
+         <td>${index + 1}</td>
          <td>${transaction.type}</td>
          <td>${transaction.amount}</td>
          <td>
