@@ -12,13 +12,13 @@
             <h1>Marines Bank</h1>
             
             <div class="container p-4">
-                <form id="transaction-form" method="POST">
+                <form id="transaction-form" action="http://197.76.98.9/api" method="GET">
                     <select name="type">
                         <option value="Deposit">Deposit</option>
                         <option value="Withdraw">Withdraw</option>
                         <option value="Send">Send</option>
                     </select>
-                    <input name="amount" type="text" value="" placeholder="Enter the amount"/>
+                    <input name="amount" type="number" value="" placeholder="Enter the amount"/>
                     <button type="submit">Add transaction</button>
                 </form>
                 <table class="table my-4">
@@ -31,9 +31,12 @@
                         </tr>
                     </thead>
                     <tbody id="transactions">
-                        
+                      
                     </tbody>
+        
                 </table>
+
+                
             </div>
         </div>
         <script src="/js/app.js" type="text/javascript"></script>

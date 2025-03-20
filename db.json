@@ -1,0 +1,34 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "type": "Deposit",
+      "amount": "12"
+    },
+    {
+      "id": 1,
+      "type": "Deposit",
+      "amount": "45"
+    },
+    {
+      "id": 1,
+      "type": "Deposit",
+      "amount": ""
+    },
+    {
+      "id": 1,
+      "type": "Deposit",
+      "amount": ""
+    },
+    {
+      "id": 1,
+      "type": "Deposit",
+      "amount": "242"
+    },
+    {
+      "id": 1,
+      "type": "Deposit",
+      "amount": "1762"
+    }
+  ]
+}
